@@ -1,0 +1,54 @@
+#include<iostream>
+#include<limits>
+using namespace std;
+
+int main()
+{
+        int n;
+        cout<<"Enter count: ";
+        cin>>n;
+        int arr[n];
+        cout<<"Enter Array ele: ";
+        for(int i=0; i<n; i++)
+        {
+            cin>>arr[i];
+        }
+        
+        int l=0;
+        int r=n-1;
+        int temp;
+        while(l<=r)
+        {
+            if(arr[l]<0 && arr[r]<0)
+            {
+                l++;
+            }
+            else if(arr[l]<0 && arr[r]>=0)
+            {
+                l++;
+                r--;
+            }
+            else if(arr[l]>=0 && arr[r]>=0)
+            {
+                r--;
+            }
+            else if(arr[l]>=0 && arr[r]<0)
+            {
+                temp = arr[l];
+                arr[l] = arr[r];
+                arr[r] = temp;
+            }
+        }
+        cout<<"Array ele: ";
+        for(int i=0; i<n; i++)
+        {
+            cout<< arr[i]<< "  ";
+        }
+    return 0;
+}
+
+
+*************
+space: o(n)
+time: o(n)
+*************
