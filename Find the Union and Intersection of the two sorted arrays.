@@ -1,0 +1,46 @@
+I)-->Union: no duplication element counted
+int doUnion(int a[], int n, int b[], int m)  {
+        set<int> s;
+        for(int i=0; i<n; i++){
+            s.insert(a[i]);
+        }
+        
+        for(int i=0; i<m; i++){
+            s.insert(b[i]);
+        }
+        return s.size();
+    }
+    
+****Time Complexity: O(m * log(m) + n * log(n))****    
+    
+II)--> Intersection: common elements from both array
+int doIntersection(int a[], int n, int b[], int m)  {
+        set<int> s;
+        int cnt=0;
+        for(int i=0; i<n; i++){
+            s.insert(a[i]);
+        }
+        
+        for(int i=0; i<m; i++){
+            if(s.find(arr[i] != s.end()))
+            {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+****Time Complexity: O(m + n)****    
+    
+
+
+***********************************************************
+i) set<int>:store ordered data or sorted elements
+   time complexity o(log n) due to order
+   
+ii) unordered_set<int> : order not maintained
+    time complexity o(l) for each operation
+    
+iii)multiset or unordered_multiset: allow duplication
+
+iv)set<int, greater<int>> : store ele in decreasing order
+
