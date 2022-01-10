@@ -1,0 +1,65 @@
+I)-->
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }while(slow!=fast);
+        
+        fast = nums[0];
+        while(slow!=fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;    
+    }
+};
+
+********************************************************
+The time complexity of this algorithm is linear: O(n).
+The space complexity of this algorithm is constant: O(1).
+********************************************************
+
+
+II)-->COUNT SORT
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int n = nums.size();
+        int i=0, result;
+        while(i<n)
+        {
+              
+              if(nums[i] != i+1)
+              {
+                  int correct = nums[i]-1;
+                  if(nums[i] != nums[correct])
+                  {
+                      int temp = nums[i];
+                      nums[i] = nums[correct];
+                      nums[correct ] = temp;
+                  }
+                  else
+                  {
+                      result = nums[i];
+                      break;
+                  }
+                   
+               }
+               else
+                   i++;
+        }
+        
+        return result;
+    }
+};
+
+********************************************************
+Feature: (i) 1,n numbers (ii) constant space 
+
+The time complexity of this algorithm is linear: O(n).
+The space complexity of this algorithm is constant: O(1).
+********************************************************
