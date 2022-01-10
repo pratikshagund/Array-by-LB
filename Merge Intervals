@@ -1,0 +1,75 @@
+I)-->
+
+
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        vector<pair<int,int>> v;
+        vector<vector<int>> it;
+        
+        for(int i=0; i<intervals.size(); i++)
+        {
+            v.push_back({intervals[i][0], intervals[i][1]});
+        }
+        
+        sort(v.begin(), v.end());
+        auto var = v[0];
+        
+        for(int i=0; i<intervals.size(); i++)
+        {
+            if(var.second >= v[i].first)
+            {
+                var.second = max(var.second, v[i].second);
+            }
+            else
+            {
+                it.push_back({var.first, var.second});
+                var = v[i];
+            }
+        }
+        it.push_back({var.first, var.second});
+        return it;
+    }
+};
+ 
+        *********************
+        time = o(nlogn)
+        space = o(n)
+        *********************
+        
+        
+
+II)-->
+ sort(intervals.begin(), intervals.end());
+        stack<pair<int,int>> s;
+        s.push({intervals[0].first, intervals[0].second});
+        
+        for(int i=0; i<intervals.size(), i++)
+        {
+            int start1 = s.top().first;
+            int end1 = s.top().second;
+            int start2 = intervals[i].first;
+            int end2 = intervals[i].second;
+            
+            if(end1 >= start2)
+            {
+                s.pop();
+                end1 = max(end,end2);
+                s.push(start1, end1);
+            }
+            else
+            {
+                s.push(start2,end2);
+            }
+        }
+        while(!s.empty())
+        {
+            cout<< s.top()<<" ";
+            s.pop();
+        }
+        return result;
+        
+        *********************
+        time = o(nlogn)
+        space = o(n)
+        *********************
