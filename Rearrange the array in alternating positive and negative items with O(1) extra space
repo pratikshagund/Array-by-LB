@@ -1,0 +1,40 @@
+follow this video for this question https://youtu.be/-z9pFUaUsGQ for O(1) space but without maintain order
+
+I)Without changing sequence
+
+	void rearrange(int arr[], int n) {
+	    vector<int> v1;
+	    vector<int> v2;
+	    
+	    for(int i=0; i<n; i++)
+	    {
+	        if(arr[i]>=0)
+	        {
+	            v1.push_back(arr[i]);
+	        }
+	        else
+	        {
+	            v2.push_back(arr[i]);
+	        }
+	    }
+	    int pos = 0;
+	    int neg = 0;
+	    int i = 0;
+	    while(i<n)
+	    {
+	        if(pos<v1.size())
+	        {
+	            arr[i++] = v1[pos++];
+	        }
+	        if(neg<v2.size())
+	        {
+	            arr[i++] = v2[neg++];
+	        }
+	    }
+	    
+	}
+  
+  ***********************************
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(N) 
+  ***********************************
