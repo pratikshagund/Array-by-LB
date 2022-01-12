@@ -1,0 +1,35 @@
+   void threeWayPartition(vector<int>& arr,int a, int b)
+    {
+    int n = arr.size();
+    int low=0;
+    int high=n-1;
+    int mid=0;
+    int temp=0;
+    while(mid<=high)
+    {
+        if(arr[mid]<a)
+        {
+            temp=arr[mid];
+            arr[mid]=arr[low];
+            arr[low]=temp;
+            mid++;
+            low++;
+        }
+        else if(arr[mid]>b)
+        {
+            temp=arr[mid];
+            arr[mid]=arr[high];
+            arr[high]=temp;
+            high--;
+        }
+        else
+        {
+            mid++;
+        }
+    }
+    }
+    
+    *********************
+    time = 0(N)
+    space = 0(1)
+    *********************
