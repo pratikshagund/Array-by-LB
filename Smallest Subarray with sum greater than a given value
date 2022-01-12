@@ -1,0 +1,21 @@
+int i=0, j=0, s=0, minm=INT_MAX;
+while(i<=j && j<n)
+{
+    while(s<=X && j<n)
+    {
+        s += a[j++];
+    }
+    while(s>X && i<j)
+    {
+        minm = min(minm, j-i+1);
+        s -= a[i];
+        i++;
+    }
+}
+
+return s;
+
+**********************
+time = 0(N)
+space = (1)
+**********************
