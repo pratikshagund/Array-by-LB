@@ -1,0 +1,33 @@
+int maxProfit(int arr[], int n)
+{
+    int dp[n];
+    for(int i=0; i<n; i++)
+    {
+        dp[i]=0;
+    }
+    
+    int maxprice = arr[n-1];
+    for(int i=n-2; i>=0; i--)
+    {
+      if(arr[i]>maxprice)
+        maxprice = arr[i];
+        
+      dp[i] = max(dp[i+1], maxprice-arr[i]);
+    }
+    
+    int minprice = arr[0];
+    for(int i=1; i<n; i++)
+    {
+        if(arr[i]<minprice)
+            minprice = arr[i];
+        
+        dp[i] = max(dp[i-1], dp[i]+(arr[i]-minprice));
+    }
+    int result = dp[n-1];
+    return result;
+}
+
+******************************************************
+dp solution refer = https://youtu.be/Y_VI2zyca7Y
+time: 0(n)
+space: 0(n)
