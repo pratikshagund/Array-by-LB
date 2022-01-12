@@ -1,0 +1,28 @@
+ int revArray(int n)
+    {
+        int res = 0;
+        while(n>0)
+        {
+            int rem = n%10;
+            res = res*10+rem;
+            n = n/10;
+        }
+        return res;
+    }
+    int PalinArray(int a[], int n)
+    {
+        for(int i=0; i<n; i++)
+        {
+            int rev = revArray(a[i]);
+    	    if(rev != a[i])
+    	    { 
+    	        return 0;
+    	    }
+        }
+    	return 1;
+    }
+    
+    ***********************
+    time = 0(N)
+    space = 0(N)
+    ***********************
